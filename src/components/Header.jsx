@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-    <>
+    <header>
       <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="/">Mantenimiento de Computadoras</Navbar.Brand>
@@ -18,7 +18,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </header>
   );
 };
 
