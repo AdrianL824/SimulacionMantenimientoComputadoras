@@ -1,0 +1,12 @@
+.GraficoTiempoTitulo {
+    position: absolute;
+    top: -30%;
+    right: 45%;
+    width: max-content;
+}
+
+.GraficoRangoHoras {
+    position: absolute;
+    top: 20%;
+    right: 50%;
+}
