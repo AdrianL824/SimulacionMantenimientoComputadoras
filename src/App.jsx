@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header.jsx";
 // import Home from "./pages/Home.jsx";
 import Descripcion from "./pages/Description.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Descripcion />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
