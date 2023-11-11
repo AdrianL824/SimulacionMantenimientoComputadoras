@@ -4,9 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-    <header>
-      <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
-        <Container>
+    <header style={{width: window}}>
+      <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark" className="nav">
+        <Container className="ContainerHeader">
           <Navbar.Brand href="/">Mantenimiento de Computadoras</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
