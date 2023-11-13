@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
 import { Pie } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
-import './Graficos.css'
+import "../assets/css/Graficos.css"
 
 
 const Grafico = () => {
@@ -16,6 +16,16 @@ const Grafico = () => {
         }]
     };
 
+    const dataReparacion = {
+        labels: ['2-4', '4-6', '6-8', '8-10', '10-12'],
+        datasets: [{
+            label: 'Pie',
+            data: [23, 18, 6, 24, 29],
+            backgroundColor:  ['red', 'yellow', 'green', 'orange', 'blue'],
+            border: ['red', 'yellow', 'green', 'orange', 'blue']
+        }]
+    }
+
     const options = {
 
     }    
@@ -24,15 +34,20 @@ const Grafico = () => {
         
         <div className="GraficoTiempoDescomposturas">
             <h1 style={{padding: '20%'}} className="GraficoTiempoTitulo">% de rangos cantidad de horas</h1>
-            <div style={{width: '40%', height: '40%'}} className="GraficoRangoHoras">
+            <div className="GraficoRangoHoras">
                 <Pie data = {data} options = {options}>
 
                 </Pie>
             </div>
-
+            <h1 style={{padding:'20%'}} className="GraficoReparacionTitulo">% de cada rango de reparación</h1>
             <div className="GraficoRangoReparacion">
+                <Pie data = {dataReparacion} options={options}>
 
+                </Pie>
             </div>
+
+            
+            <div></div>
         </div>
     );
 

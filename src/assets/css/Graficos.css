@@ -1,0 +1,29 @@
+.GraficoTiempoTitulo {
+    position: absolute;
+    top: -30%;
+    right: 45%;
+    width: max-content;
+}
+
+.GraficoRangoHoras {
+    position: absolute;
+    top: 20%;
+    right: 58%;
+    width: 30%;
+    height: 30%;
+}
+
+.GraficoReparacionTitulo {
+    position: absolute;
+    top: -30%;
+    left: 45%;
+    width: max-content;
+}
+
+.GraficoRangoReparacion {
+    position: absolute;
+    top: 20%;
+    right: -3%;
+    width: 30%;
+    height: 30%;
+}
