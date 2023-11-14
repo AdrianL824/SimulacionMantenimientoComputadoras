@@ -4,7 +4,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 import "../assets/css/Graficos.css"
 
 
-const Grafico = () => {
+const Graficos = () => {
 
     const data = {
         labels: ['6-8', '8-10', '10-12', '12-14', '16-18', '18-20'], 
@@ -33,13 +33,13 @@ const Grafico = () => {
     return(
         
         <div className="GraficoTiempoDescomposturas">
-            <h1 style={{padding: '20%'}} className="GraficoTiempoTitulo">% de rangos cantidad de horas</h1>
+            <h1 className="GraficoTiempoTitulo">% de rangos cantidad de horas</h1>
             <div className="GraficoRangoHoras">
                 <Pie data = {data} options = {options}>
 
                 </Pie>
             </div>
-            <h1 style={{padding:'20%'}} className="GraficoReparacionTitulo">% de cada rango de reparación</h1>
+            <h1  className="GraficoReparacionTitulo">% de cada rango de reparación</h1>
             <div className="GraficoRangoReparacion">
                 <Pie data = {dataReparacion} options={options}>
 
@@ -53,4 +53,4 @@ const Grafico = () => {
 
 };
 
-export default Grafico;
+export default Graficos;

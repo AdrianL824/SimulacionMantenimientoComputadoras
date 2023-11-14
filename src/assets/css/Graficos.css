@@ -1,12 +1,13 @@
 .GraficoTiempoTitulo {
-    position: absolute;
+    position: static;
     top: -30%;
     right: 45%;
     width: max-content;
+    color: black;
 }
 
 .GraficoRangoHoras {
-    position: absolute;
+    position: static;
     top: 20%;
     right: 58%;
     width: 30%;
@@ -14,14 +15,14 @@
 }
 
 .GraficoReparacionTitulo {
-    position: absolute;
+    position: static;
     top: -30%;
     left: 45%;
     width: max-content;
 }
 
 .GraficoRangoReparacion {
-    position: absolute;
+    position: static;
     top: 20%;
     right: -3%;
     width: 30%;
