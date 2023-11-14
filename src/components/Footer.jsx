@@ -1,20 +1,20 @@
+import "../assets/css/Footer.css";
 
 const Footer = () => {
   return (
-    <footer style={styles.footer}>
-      <div style={styles.footerContent}>
-        <div style={styles.footerSection}>
+    <footer className="footer">
+      <div className="footerContent">
+        <div className="footerSection">
           <h2>Contacto</h2>
           <p>Universidad: Universidad Mayor de San Simon</p>
-          <p>Grupo: N° 7 </p>
-          <p></p>
+          <p>Grupo: N° 7</p>
         </div>
-        <div style={styles.footerSection}>
+        <div className="footerSection">
           <h2>Síguenos en Redes Sociales</h2>
-          <ul style={styles.list}>
+          <ul>
             <li>
               <a
-                href="https://facebook.com/tusitio"
+                href="https://facebook.com/oficina7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -23,7 +23,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://twitter.com/tusitio"
+                href="https://twitter.com/oficina7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -32,7 +32,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://instagram.com/tusitio"
+                href="https://instagram.com/oficina7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -42,38 +42,10 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div style={styles.bottomBar}>
+      <div className="bottomBar">
         <p>2-2023 Oficina 7 © Taller de Simulacion de Sistemas</p>
       </div>
     </footer>
   );
-};
-
-const styles = {
-  footer: {
-    backgroundColor: "#333",
-    color: "#fff",
-    padding: "20px",
-    textAlign: "center",
-    marginTop: "20px",
-  },
-  footerContent: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
-  },
-  footerSection: {
-    flex: "1",
-    margin: "0 20px",
-  },
-  list: {
-    listStyle: "none",
-  },
-  bottomBar: {
-    marginTop: "20px",
-    borderTop: "1px solid #555",
-    paddingTop: "10px",
-  },
 };
 export default Footer;
