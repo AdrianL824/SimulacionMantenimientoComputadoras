@@ -372,7 +372,7 @@ const Tabla = () => {
 
       <Container>
       <div className="Graficos">
-            <h1 className="GraficoTitulo">% de rangos cantidad de horas</h1>
+            <h1 className="GraficoTitulo">% de rangos de maquinas ociosas</h1>
             <div className="GraficoTorta">
               <Pie data={dataMaquinasOciosas} options={options}></Pie>
             </div>
@@ -423,7 +423,7 @@ const Tabla = () => {
       </Container>
 
       <div className="Graficos">
-            <h1 className="GraficoTitulo">% de cada rango de reparación</h1>
+            <h1 className="GraficoTitulo">% de rangos de tiempos de reparación</h1>
             <div className="GraficoTorta">
               <Pie data={dataTiempoReparacion} options={options}></Pie>
             </div>
