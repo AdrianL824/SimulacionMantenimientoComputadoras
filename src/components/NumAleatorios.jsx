@@ -128,7 +128,7 @@ const Tabla = () => {
   };
 
   //Funtion para los resultados de los rangos
-  const totalResultados = () => {
+  const totalRangos = () => {
     let contador1 = 0;
     let contador2 = 0;
     let contador3 = 0;
@@ -144,12 +144,12 @@ const Tabla = () => {
       if (aleatorio[i].rangoDescomposturas === "Rango 6") contador6++;
     }
     const result = {
-      Rango1: contador1,
-      Rango2: contador2,
-      Rango3: contador3,
-      Rango4: contador4,
-      Rango5: contador5,
-      Rango6: contador6,
+      contador1: contador1,
+      contador2: contador2,
+      contador3: contador3,
+      contador4: contador4,
+      contador5: contador5,
+      contador6: contador6,
     };
     setCantidad(result);
   };
@@ -224,7 +224,7 @@ const Tabla = () => {
         <Button
           onClick={() => {
             generadorObjetos();
-            totalResultados();
+            totalRangos();
             resultados();
           }}
           variant="primary"
@@ -232,6 +232,7 @@ const Tabla = () => {
           Generar
         </Button>
       </Container>
+      {/* tabla1 */}
       <Container>
         <Card>
           <Card.Header>Tabla de Resultados</Card.Header>
@@ -265,6 +266,49 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
+      {/* tabla2 */}
+      <Container>
+        <Card>
+          <Card.Header>
+            Tabla de Totales de Rangos de Maquinas Ociosas
+          </Card.Header>
+          <Card.Body>
+            <Container>
+              <Table striped bordered hover>
+                <thead>
+                  <tr className="columna">
+                    <th>Rango1</th>
+                    <th>Rango2</th>
+                    <th>Rango3</th>
+                    <th>Rango4</th>
+                    <th>Rango5</th>
+                    <th>Rango6</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="columna">
+                    <td>6 - 8</td>
+                    <td>8 - 10</td>
+                    <td>10 - 12</td>
+                    <td>12 - 14</td>
+                    <td>16 - 18</td>
+                    <td>18 - 20</td>
+                  </tr>
+                  <tr className="columna">
+                    <td>{cantidad.contador1}</td>
+                    <td>{cantidad.contador2}</td>
+                    <td>{cantidad.contador3}</td>
+                    <td>{cantidad.contador4}</td>
+                    <td>{cantidad.contador5}</td>
+                    <td>{cantidad.contador6}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Container>
+      {/* tabla3 */}
       <Container>
         <Card>
           <Card.Header>Tabla de datos</Card.Header>
