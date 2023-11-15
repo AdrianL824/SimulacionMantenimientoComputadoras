@@ -241,6 +241,7 @@ const Tabla = () => {
 
   return (
     <Container>
+      {/* primer boton para iniciar cambio */}
       <Container className="titulo">
         <p>
           Al apretar el siguiente boton se mostraran los datos de la simulacion
@@ -258,6 +259,7 @@ const Tabla = () => {
           Generar
         </Button>
       </Container>
+
       {/* tabla1 Resultados Totales*/}
       <Container>
         <Card>
@@ -292,6 +294,7 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
+
       {/* tabla2 Resultados Rangos Ocio*/}
       <Container>
         <Card>
@@ -304,22 +307,22 @@ const Tabla = () => {
                 <thead>
                   <tr className="resultadoTabla">
                     <th>
-                      Rango1 <br /> 6 - 8
+                      Rango1 <br /> 6 - 8 (horas)
                     </th>
                     <th>
-                      Rango2 <br /> 8 - 10
+                      Rango2 <br /> 8 - 10 (horas)
                     </th>
                     <th>
-                      Rango3 <br /> 10 - 12
+                      Rango3 <br /> 10 - 12 (horas)
                     </th>
                     <th>
-                      Rango4 <br /> 12 - 14
+                      Rango4 <br /> 12 - 14 (horas)
                     </th>
                     <th>
-                      Rango5 <br /> 16 - 18
+                      Rango5 <br /> 16 - 18 (horas)
                     </th>
                     <th>
-                      Rango6 <br /> 18 - 20
+                      Rango6 <br /> 18 - 20 (horas)
                     </th>
                   </tr>
                 </thead>
@@ -338,6 +341,7 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
+
       {/* tabla3 Resultado Rengos Reparacion */}
       <Container>
         <Card>
@@ -350,19 +354,19 @@ const Tabla = () => {
                 <thead>
                   <tr className="resultadoTabla">
                     <th>
-                      Rango1 <br /> 6 - 8
+                      Rango1 <br /> 2 - 4 (min)
                     </th>
                     <th>
-                      Rango2 <br /> 8 - 10
+                      Rango2 <br /> 4 - 6 (min)
                     </th>
                     <th>
-                      Rango3 <br /> 10 - 12
+                      Rango3 <br /> 6 - 8 (min)
                     </th>
                     <th>
-                      Rango4 <br /> 12 - 14
+                      Rango4 <br /> 8 - 10 (min)
                     </th>
                     <th>
-                      Rango5 <br /> 16 - 18
+                      Rango5 <br /> 10 - 12
                     </th>
                   </tr>
                 </thead>
@@ -380,6 +384,7 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
+
       {/* Segundo boton para observar cambio */}
       <Container className="titulo">
         <p>
@@ -397,6 +402,7 @@ const Tabla = () => {
           Generar
         </Button>
       </Container>
+
       {/* tabla4 Resultados de datos*/}
       <Container>
         <Card>
