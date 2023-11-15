@@ -6,17 +6,13 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 
 const Tabla = () => {
-  const dato = [];
-  const [aleatorio, setAleatorio] = useState(dato);
-
+  const [aleatorio, setAleatorio] = useState([]);
   //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
   const valorDescomposturas = (i) => {
     if (i <= 0.1) {
       let min = 6;
       let max = 8;
-      var rango = "valor1";
-      let numero = Math.floor(Math.random() * (max - min + 1) + min);
-      return [numero, rango];
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     if (i >= 0.11 && i <= 0.25) {
