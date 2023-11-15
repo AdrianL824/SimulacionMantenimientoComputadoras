@@ -4,6 +4,9 @@ import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Tabla = () => {
   const [aleatorio, setAleatorio] = useState([]); //Numeros y datos para la tabla 3
@@ -239,6 +242,31 @@ const Tabla = () => {
     setRes(resTotal);
   };
 
+  const dataMaquinasOciosas = {
+    labels: ["6-8", "8-10", "10-12", "12-14", "16-18", "18-20"],
+    datasets: [
+      {
+        label: "Porcentaje %",
+        data: [cantidad.contador1, cantidad.contador2, cantidad.contador3, cantidad.contador4, cantidad.contador5, cantidad.contador6],
+        backgroundColor: ["green", "red", "yellow", "blue", "orange", "brown"],
+        border: ["green", "red", "yellow", "blue", "orange", "brown"],
+      },
+    ],
+  };
+
+  const dataTiempoReparacion = {
+    labels: ["2-4", "4-6", "6-8", "8-10", "10-12"],
+    datasets: [
+      {
+        label: "Porcentaje %",
+        data: [reparacion.contador1, reparacion.contador2, reparacion.contador3, reparacion.contador4, reparacion.contador5],
+        backgroundColor: ["red", "yellow", "green", "orange", "blue"],
+        border: ["red", "yellow", "green", "orange", "blue"],
+      },
+    ],
+  };
+
+  const options = {};
   return (
     <Container>
       {/* primer boton para iniciar cambio */}
@@ -342,6 +370,15 @@ const Tabla = () => {
         </Card>
       </Container>
 
+      <Container>
+      <div className="Graficos">
+            <h1 className="GraficoTitulo">% de rangos cantidad de horas</h1>
+            <div className="GraficoTorta">
+              <Pie data={dataMaquinasOciosas} options={options}></Pie>
+            </div>
+      </div>
+      </Container>
+
       {/* tabla3 Resultado Rengos Reparacion */}
       <Container>
         <Card>
@@ -384,6 +421,13 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
+
+      <div className="Graficos">
+            <h1 className="GraficoTitulo">% de cada rango de reparación</h1>
+            <div className="GraficoTorta">
+              <Pie data={dataTiempoReparacion} options={options}></Pie>
+            </div>
+          </div>
 
       {/* Segundo boton para observar cambio */}
       <Container className="titulo">
