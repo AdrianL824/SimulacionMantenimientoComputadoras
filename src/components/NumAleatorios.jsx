@@ -14,9 +14,11 @@ const Tabla = () => {
     if (i <= 0.1) {
       let min = 6;
       let max = 8;
+      var rango = "valor1";
       let numero = Math.floor(Math.random() * (max - min + 1) + min);
-      return numero;
+      return [numero, rango];
     }
+
     if (i >= 0.11 && i <= 0.25) {
       let min = 8;
       let max = 10;
@@ -149,43 +151,77 @@ const Tabla = () => {
   };
   return (
     <Container>
-      <Card>
-        <Card.Header>Tabla de datos</Card.Header>
-        <Card.Body>
-          <Button onClick={generadorObjetos} variant="primary">
-            Generar
-          </Button>
-
-          <Container>
-            <Table striped bordered hover>
-              <thead>
-                <tr className="columna">
-                  <th>n°</th>
-                  <th>%</th>
-                  <th>Tiempo descomporturas (horas)</th>
-                  <th>Rango descomposturas</th>
-                  <th>%</th>
-                  <th>Tiempo arreglo (min)</th>
-                  <th>Rango reparacion</th>
-                </tr>
-              </thead>
-              <tbody>
-                {aleatorio.map((i, index) => (
-                  <tr key={index} className="columna">
-                    <td>{index + 1}</td>
-                    <td>{i.numeros}</td>
-                    <td>{i.cantidad}</td>
-                    <td>{i.rangoDescomposturas}</td>
-                    <td>{i.numeros2}</td>
-                    <td>{i.reparacion}</td>
-                    <td>{i.rangoReparacion}</td>
+      <Container className="titulo">
+        <p>
+          Al apretar el siguiente boton se mostraran los datos de la simulacion
+          o se refrescaran los datos:
+        </p>
+        <Button onClick={generadorObjetos} variant="primary">
+          Generar
+        </Button>
+      </Container>
+      <Container>
+        <Card>
+          <Card.Header>Tabla de Resultados</Card.Header>
+          <Card.Body>
+            <Container>
+              <Table striped bordered hover>
+                <thead>
+                  <tr className="columna">
+                    <th>n°</th>
+                    <th>%</th>
+                    <th>Tiempo descomporturas (horas)</th>
+                    <th>Rango descomposturas</th>
+                    <th>%</th>
+                    <th>Tiempo arreglo (min)</th>
+                    <th>Rango reparacion</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          </Container>
-        </Card.Body>
-      </Card>
+                </thead>
+                <tbody>
+                  <tr className="columna">
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Container>
+      <Container>
+        <Card>
+          <Card.Header>Tabla de datos</Card.Header>
+          <Card.Body>
+            <Container>
+              <Table striped bordered hover>
+                <thead>
+                  <tr className="columna">
+                    <th>n°</th>
+                    <th>%</th>
+                    <th>Tiempo descomporturas (horas)</th>
+                    <th>Rango descomposturas</th>
+                    <th>%</th>
+                    <th>Tiempo arreglo (min)</th>
+                    <th>Rango reparacion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {aleatorio.map((i, index) => (
+                    <tr key={index} className="columna">
+                      <td>{index + 1}</td>
+                      <td>{i.numeros}</td>
+                      <td>{i.cantidad}</td>
+                      <td>{i.rangoDescomposturas}</td>
+                      <td>{i.numeros2}</td>
+                      <td>{i.reparacion}</td>
+                      <td>{i.rangoReparacion}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Container>
     </Container>
   );
 };
