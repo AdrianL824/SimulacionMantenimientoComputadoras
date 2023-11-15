@@ -19,14 +19,14 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto navBar">
-              <Nav.Link>
-                <Link to="/">Home</Link>
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/grafico">Grafico</Link>{" "}
+              <Nav.Link as={Link} to="/grafico">
+                Grafico
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/tabla">Tabla</Link>
+              <Nav.Link as={Link} to="/tabla">
+                Tabla
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
