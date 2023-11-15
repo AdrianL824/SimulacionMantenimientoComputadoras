@@ -7,7 +7,8 @@ import Table from "react-bootstrap/Table";
 
 const Tabla = () => {
   const [aleatorio, setAleatorio] = useState([]); //Numeros y datos para la tabla 3
-  const [cantidad, setCantidad] = useState([]); //Cantidad  de cada rango para la tabla 2
+  const [cantidad, setCantidad] = useState([]); //Cantidad  de cada rango de ocio para la tabla 2
+  const [reparacion, setReparacion] = useState([]);
   const [res, setRes] = useState([]);
 
   //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
@@ -127,7 +128,7 @@ const Tabla = () => {
     }
   };
 
-  //Funtion para los resultados de los rangos
+  //Funtion para los resultados de los rangos de ocio
   const totalRangos = () => {
     let contador1 = 0;
     let contador2 = 0;
@@ -153,6 +154,30 @@ const Tabla = () => {
     };
     setCantidad(result);
   };
+  //Funtion para los resultados de los rangos de ocio
+  const totalRangosReparacion = () => {
+    let contador1 = 0;
+    let contador2 = 0;
+    let contador3 = 0;
+    let contador4 = 0;
+    let contador5 = 0;
+    for (let i = 0; i < aleatorio.length; i++) {
+      if (aleatorio[i].rangoReparacion === "Rango 1") contador1++;
+      if (aleatorio[i].rangoReparacion === "Rango 2") contador2++;
+      if (aleatorio[i].rangoReparacion === "Rango 3") contador3++;
+      if (aleatorio[i].rangoReparacion === "Rango 4") contador4++;
+      if (aleatorio[i].rangoReparacion === "Rango 5") contador5++;
+    }
+    const result = {
+      contador1: contador1,
+      contador2: contador2,
+      contador3: contador3,
+      contador4: contador4,
+      contador5: contador5,
+    };
+    setReparacion(result);
+  };
+
   //Funcion de generacion de la tabla de numeros aleatorios
   const generadorObjetos = () => {
     const numero = new Array(100);
@@ -226,13 +251,14 @@ const Tabla = () => {
             generadorObjetos();
             totalRangos();
             resultados();
+            totalRangosReparacion();
           }}
           variant="primary"
         >
           Generar
         </Button>
       </Container>
-      {/* tabla1 */}
+      {/* tabla1 Resultados Totales*/}
       <Container>
         <Card>
           <Card.Header>Tabla de Resultados</Card.Header>
@@ -266,34 +292,38 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
-      {/* tabla2 */}
+      {/* tabla2 Resultados Rangos Ocio*/}
       <Container>
         <Card>
           <Card.Header>
-            Tabla de Totales de Rangos de Maquinas Ociosas
+            Tabla de totales de rangos de maquinas ociosas
           </Card.Header>
           <Card.Body>
             <Container>
               <Table striped bordered hover>
                 <thead>
-                  <tr className="columna">
-                    <th>Rango1</th>
-                    <th>Rango2</th>
-                    <th>Rango3</th>
-                    <th>Rango4</th>
-                    <th>Rango5</th>
-                    <th>Rango6</th>
+                  <tr className="resultadoTabla">
+                    <th>
+                      Rango1 <br /> 6 - 8
+                    </th>
+                    <th>
+                      Rango2 <br /> 8 - 10
+                    </th>
+                    <th>
+                      Rango3 <br /> 10 - 12
+                    </th>
+                    <th>
+                      Rango4 <br /> 12 - 14
+                    </th>
+                    <th>
+                      Rango5 <br /> 16 - 18
+                    </th>
+                    <th>
+                      Rango6 <br /> 18 - 20
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="columna">
-                    <td>6 - 8</td>
-                    <td>8 - 10</td>
-                    <td>10 - 12</td>
-                    <td>12 - 14</td>
-                    <td>16 - 18</td>
-                    <td>18 - 20</td>
-                  </tr>
                   <tr className="columna">
                     <td>{cantidad.contador1}</td>
                     <td>{cantidad.contador2}</td>
@@ -308,7 +338,66 @@ const Tabla = () => {
           </Card.Body>
         </Card>
       </Container>
-      {/* tabla3 */}
+      {/* tabla3 Resultado Rengos Reparacion */}
+      <Container>
+        <Card>
+          <Card.Header>
+            Tabla de totales de rangos de tiempo de reparacion
+          </Card.Header>
+          <Card.Body>
+            <Container>
+              <Table striped bordered hover>
+                <thead>
+                  <tr className="resultadoTabla">
+                    <th>
+                      Rango1 <br /> 6 - 8
+                    </th>
+                    <th>
+                      Rango2 <br /> 8 - 10
+                    </th>
+                    <th>
+                      Rango3 <br /> 10 - 12
+                    </th>
+                    <th>
+                      Rango4 <br /> 12 - 14
+                    </th>
+                    <th>
+                      Rango5 <br /> 16 - 18
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="columna">
+                    <td>{reparacion.contador1}</td>
+                    <td>{reparacion.contador2}</td>
+                    <td>{reparacion.contador3}</td>
+                    <td>{reparacion.contador4}</td>
+                    <td>{reparacion.contador5}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Container>
+      {/* Segundo boton para observar cambio */}
+      <Container className="titulo">
+        <p>
+          Al apretar el siguiente boton se mostraran se refrescaran los datos:
+        </p>
+        <Button
+          onClick={() => {
+            generadorObjetos();
+            totalRangos();
+            resultados();
+            totalRangosReparacion();
+          }}
+          variant="primary"
+        >
+          Generar
+        </Button>
+      </Container>
+      {/* tabla4 Resultados de datos*/}
       <Container>
         <Card>
           <Card.Header>Tabla de datos</Card.Header>
