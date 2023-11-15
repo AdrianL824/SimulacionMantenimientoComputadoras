@@ -25,7 +25,7 @@ const Header = () => {
                 Grafico
               </Nav.Link>
               <Nav.Link as={Link} to="/tabla">
-                Tabla
+                Tablas
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -6,7 +6,10 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 
 const Tabla = () => {
-  const [aleatorio, setAleatorio] = useState([]);
+  const [aleatorio, setAleatorio] = useState([]); //Numeros y datos para la tabla 3
+  const [cantidad, setCantidad] = useState([]); //Cantidad  de cada rango para la tabla 2
+  const [res, setRes] = useState([]);
+
   //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
   const valorDescomposturas = (i) => {
     if (i <= 0.1) {
@@ -73,8 +76,7 @@ const Tabla = () => {
     if (i <= 0.15) {
       let min = 2;
       let max = 4;
-      let numero = Math.floor(Math.random() * (max - min + 1) + min);
-      return numero;
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
     if (i >= 0.16 && i <= 0.4) {
       let min = 4;
@@ -125,11 +127,39 @@ const Tabla = () => {
     }
   };
 
+  //Funtion para los resultados de los rangos
+  const totalResultados = () => {
+    let contador1 = 0;
+    let contador2 = 0;
+    let contador3 = 0;
+    let contador4 = 0;
+    let contador5 = 0;
+    let contador6 = 0;
+    for (let i = 0; i < aleatorio.length; i++) {
+      if (aleatorio[i].rangoDescomposturas === "Rango 1") contador1++;
+      if (aleatorio[i].rangoDescomposturas === "Rango 2") contador2++;
+      if (aleatorio[i].rangoDescomposturas === "Rango 3") contador3++;
+      if (aleatorio[i].rangoDescomposturas === "Rango 4") contador4++;
+      if (aleatorio[i].rangoDescomposturas === "Rango 5") contador5++;
+      if (aleatorio[i].rangoDescomposturas === "Rango 6") contador6++;
+    }
+    const result = {
+      Rango1: contador1,
+      Rango2: contador2,
+      Rango3: contador3,
+      Rango4: contador4,
+      Rango5: contador5,
+      Rango6: contador6,
+    };
+    setCantidad(result);
+  };
+  //Funcion de generacion de la tabla de numeros aleatorios
   const generadorObjetos = () => {
     const numero = new Array(100);
     for (let i = 0; i < numero.length; i++) {
       let numeros = Math.random().toFixed(2);
       let cantidad = valorDescomposturas(numeros);
+      // valorDescomposturas(numeros) = rango.valor;
       let rangoDescomposturas = rangosDescomposturas(numeros);
       let numeros2 = Math.random().toFixed(2);
       let reparacion = valorReparacion(numeros2);
@@ -145,6 +175,45 @@ const Tabla = () => {
     }
     setAleatorio(numero);
   };
+  //Funcion de promedio y resultados de la tabla 1
+  const resultados = () => {
+    const totalUso = (
+      aleatorio.map((i) => i.cantidad).reduce((prev, curr) => prev + curr, 0) /
+      100
+    ).toFixed(0);
+    const totalReparacion = (
+      aleatorio
+        .map((i) => i.reparacion)
+        .reduce((prev, curr) => prev + curr, 0) / 100
+    ).toFixed(0);
+    const precioHoraOcio = 5;
+    const precioEspecialista = 50;
+    const precioOcioTotal = (
+      (aleatorio
+        .map((i) => i.reparacion)
+        .reduce((prev, curr) => prev + curr, 0) /
+        60) *
+      precioHoraOcio
+    ).toFixed(0);
+
+    const sueldoEspecialista = (
+      (aleatorio
+        .map((i) => i.reparacion)
+        .reduce((prev, curr) => prev + curr, 0) /
+        60) *
+      precioEspecialista
+    ).toFixed(0);
+    const resTotal = {
+      totalUso: totalUso,
+      totalReparacion: totalReparacion,
+      precioHoraOcio: precioHoraOcio,
+      precioEspecialista: precioEspecialista,
+      precioOcioTotal: precioOcioTotal,
+      sueldoEspecialista: sueldoEspecialista,
+    };
+    setRes(resTotal);
+  };
+
   return (
     <Container>
       <Container className="titulo">
@@ -152,7 +221,14 @@ const Tabla = () => {
           Al apretar el siguiente boton se mostraran los datos de la simulacion
           o se refrescaran los datos:
         </p>
-        <Button onClick={generadorObjetos} variant="primary">
+        <Button
+          onClick={() => {
+            generadorObjetos();
+            totalResultados();
+            resultados();
+          }}
+          variant="primary"
+        >
           Generar
         </Button>
       </Container>
@@ -164,18 +240,24 @@ const Tabla = () => {
               <Table striped bordered hover>
                 <thead>
                   <tr className="columna">
-                    <th>n°</th>
-                    <th>%</th>
-                    <th>Tiempo descomporturas (horas)</th>
-                    <th>Rango descomposturas</th>
-                    <th>%</th>
-                    <th>Tiempo arreglo (min)</th>
-                    <th>Rango reparacion</th>
+                    <th>Cant. Maquinas</th>
+                    <th>Promedio de horas de uso</th>
+                    <th>Promedio de minutos de reparacion</th>
+                    <th>Precio /hora de ocio</th>
+                    <th>Salario /hora</th>
+                    <th>Precio ocio total</th>
+                    <th>Salario total</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="columna">
-                    <td>1</td>
+                    <td>{aleatorio.length}</td>
+                    <td>{res.totalUso}</td>
+                    <td>{res.totalReparacion}</td>
+                    <td>{res.precioHoraOcio}</td>
+                    <td>{res.precioEspecialista}</td>
+                    <td>{res.precioOcioTotal}</td>
+                    <td>{res.sueldoEspecialista}</td>
                   </tr>
                 </tbody>
               </Table>
