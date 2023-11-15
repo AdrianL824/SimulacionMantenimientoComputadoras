@@ -9,11 +9,13 @@ const Tabla = () => {
   const dato = [];
   const [aleatorio, setAleatorio] = useState(dato);
 
-  const rangosDescomposturas = (i) => {
+  //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
+  const valorDescomposturas = (i) => {
     if (i <= 0.1) {
       let min = 6;
       let max = 8;
-      return Math.floor(Math.random() * (max - min + 1) + min);
+      let numero = Math.floor(Math.random() * (max - min + 1) + min);
+      return numero;
     }
     if (i >= 0.11 && i <= 0.25) {
       let min = 8;
@@ -41,19 +43,106 @@ const Tabla = () => {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
   };
+  //Saca un rango de despomposturas entre el rango con lo numeros aleatorios
+  const rangosDescomposturas = (i) => {
+    if (i <= 0.1) {
+      let rango = "Rango 1";
+      return rango;
+    }
+    if (i >= 0.11 && i <= 0.25) {
+      let rango = "Rango 2";
+      return rango;
+    }
+    if (i >= 0.26 && i <= 0.49) {
+      let rango = "Rango 3";
+      return rango;
+    }
+    if (i >= 0.5 && i <= 0.75) {
+      let rango = "Rango 4";
+      return rango;
+    }
+    if (i >= 0.76 && i <= 0.93) {
+      let rango = "Rango 5";
+      return rango;
+    }
+    if (i >= 0.94 && i <= 1) {
+      let rango = "Rango 6";
+      return rango;
+    }
+  };
+  //Saca un numero de reparacion entre el rango con lo numeros aleatorios
+  const valorReparacion = (i) => {
+    if (i <= 0.15) {
+      let min = 2;
+      let max = 4;
+      let numero = Math.floor(Math.random() * (max - min + 1) + min);
+      return numero;
+    }
+    if (i >= 0.16 && i <= 0.4) {
+      let min = 4;
+      let max = 6;
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    if (i >= 0.41 && i <= 0.7) {
+      let min = 6;
+      let max = 8;
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    if (i >= 0.71 && i <= 0.9) {
+      let min = 8;
+      let max = 10;
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    if (i >= 0.91 && i <= 1) {
+      let min = 10;
+      let max = 12;
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+  };
+  //Saca un rango de reparacion entre el rango con lo numeros aleatorios
+  const rangosReparacion = (i) => {
+    if (i <= 0.1) {
+      let rango = "Rango 1";
+      return rango;
+    }
+    if (i >= 0.11 && i <= 0.25) {
+      let rango = "Rango 2";
+      return rango;
+    }
+    if (i >= 0.26 && i <= 0.49) {
+      let rango = "Rango 3";
+      return rango;
+    }
+    if (i >= 0.5 && i <= 0.75) {
+      let rango = "Rango 4";
+      return rango;
+    }
+    if (i >= 0.76 && i <= 0.93) {
+      let rango = "Rango 5";
+      return rango;
+    }
+    if (i >= 0.94 && i <= 1) {
+      let rango = "Rango 6";
+      return rango;
+    }
+  };
 
   const generadorObjetos = () => {
     const numero = new Array(100);
     for (let i = 0; i < numero.length; i++) {
       let numeros = Math.random().toFixed(2);
-      let cantidad = rangosDescomposturas(numeros);
+      let cantidad = valorDescomposturas(numeros);
+      let rangoDescomposturas = rangosDescomposturas(numeros);
       let numeros2 = Math.random().toFixed(2);
-      let transportada = numeros2 + 1;
+      let reparacion = valorReparacion(numeros2);
+      let rangoReparacion = rangosReparacion(numeros2);
       numero[i] = {
         numeros: numeros,
         cantidad: cantidad,
+        rangoDescomposturas: rangoDescomposturas,
         numeros2: numeros2,
-        transportada: transportada,
+        reparacion: reparacion,
+        rangoReparacion: rangoReparacion,
       };
     }
     setAleatorio(numero);
@@ -66,6 +155,7 @@ const Tabla = () => {
           <Button onClick={generadorObjetos} variant="primary">
             Generar
           </Button>
+
           <Container>
             <Table striped bordered hover>
               <thead>
@@ -73,20 +163,22 @@ const Tabla = () => {
                   <th>n°</th>
                   <th>%</th>
                   <th>Tiempo descomporturas (horas)</th>
+                  <th>Rango descomposturas</th>
                   <th>%</th>
                   <th>Tiempo arreglo (min)</th>
-                  <th>Ganancia</th>
+                  <th>Rango reparacion</th>
                 </tr>
               </thead>
               <tbody>
                 {aleatorio.map((i, index) => (
-                  <tr key={index}>
+                  <tr key={index} className="columna">
                     <td>{index + 1}</td>
                     <td>{i.numeros}</td>
                     <td>{i.cantidad}</td>
+                    <td>{i.rangoDescomposturas}</td>
                     <td>{i.numeros2}</td>
-                    <td>{i.transportada}</td>
-                    <td>0</td>
+                    <td>{i.reparacion}</td>
+                    <td>{i.rangoReparacion}</td>
                   </tr>
                 ))}
               </tbody>

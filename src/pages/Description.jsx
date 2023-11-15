@@ -96,7 +96,7 @@ const Descripcion = () => {
               </tbody>
             </Table>
           </Container>
-          <Button href="/simular" variant="primary">
+          <Button href="/tabla" variant="primary">
             Simular
           </Button>
         </Card.Body>

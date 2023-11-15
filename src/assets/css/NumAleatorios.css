@@ -1,3 +1,16 @@
-.columna th {
+.container {
+    margin-top: 10px;
+}
+
+.columna th:nth-child(3),
+.columna th:nth-child(4),
+.columna th:nth-child(6){
+    width: 20%;
+}
+.columna th{
+    text-align: center;
+}
+
+.columna td{
     text-align: center;
 }
