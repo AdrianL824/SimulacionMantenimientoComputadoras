@@ -247,7 +247,14 @@ const Tabla = () => {
     datasets: [
       {
         label: "Porcentaje %",
-        data: [cantidad.contador1, cantidad.contador2, cantidad.contador3, cantidad.contador4, cantidad.contador5, cantidad.contador6],
+        data: [
+          cantidad.contador1,
+          cantidad.contador2,
+          cantidad.contador3,
+          cantidad.contador4,
+          cantidad.contador5,
+          cantidad.contador6,
+        ],
         backgroundColor: ["green", "red", "yellow", "blue", "orange", "brown"],
         border: ["green", "red", "yellow", "blue", "orange", "brown"],
       },
@@ -259,7 +266,13 @@ const Tabla = () => {
     datasets: [
       {
         label: "Porcentaje %",
-        data: [reparacion.contador1, reparacion.contador2, reparacion.contador3, reparacion.contador4, reparacion.contador5],
+        data: [
+          reparacion.contador1,
+          reparacion.contador2,
+          reparacion.contador3,
+          reparacion.contador4,
+          reparacion.contador5,
+        ],
         backgroundColor: ["red", "yellow", "green", "orange", "blue"],
         border: ["red", "yellow", "green", "orange", "blue"],
       },
@@ -370,13 +383,17 @@ const Tabla = () => {
         </Card>
       </Container>
 
+      {/* grafico de maquinas ociosas */}
       <Container>
-      <div className="Graficos">
+        <Card>
+          <Card.Header>Grafico de maquinas ociosas</Card.Header>
+          <div className="Graficos tortaIntera">
             <h1 className="GraficoTitulo">% de rangos de maquinas ociosas</h1>
             <div className="GraficoTorta">
               <Pie data={dataMaquinasOciosas} options={options}></Pie>
             </div>
-      </div>
+          </div>
+        </Card>
       </Container>
 
       {/* tabla3 Resultado Rengos Reparacion */}
@@ -422,12 +439,19 @@ const Tabla = () => {
         </Card>
       </Container>
 
-      <div className="Graficos">
-            <h1 className="GraficoTitulo">% de rangos de tiempos de reparación</h1>
+      <Container>
+        <Card>
+          <Card.Header>Grafico de tiempos de reaparacion</Card.Header>
+          <div className="Graficos tortaIntera">
+            <h1 className="GraficoTitulo">
+              % de rangos de tiempos de reparación
+            </h1>
             <div className="GraficoTorta">
               <Pie data={dataTiempoReparacion} options={options}></Pie>
             </div>
           </div>
+        </Card>
+      </Container>
 
       {/* Segundo boton para observar cambio */}
       <Container className="titulo">
