@@ -6,6 +6,7 @@ import Descripcion from "./pages/Description.jsx";
 import Footer from "./components/Footer.jsx";
 import Graficos from "./pages/Graficos.jsx";
 import Tabla from "./components/NumAleatorios.jsx";
+import Error404 from "./pages/Error404.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Descripcion />} />
         <Route path="/grafico" element={<Graficos />} />
         <Route path="/tabla" element={<Tabla />} />
+        <Route path="/*" element={<Error404 />} />
       </Routes>
       <Footer />
     </Router>

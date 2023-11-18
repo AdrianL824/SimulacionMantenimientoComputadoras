@@ -1,0 +1,15 @@
+.container{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.imgError{
+    width: 100%;
+    max-width: 25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 90%;
+}
