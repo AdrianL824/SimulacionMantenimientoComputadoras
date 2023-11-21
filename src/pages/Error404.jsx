@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 
 const Error404 = () => {
   return (
-    <Container>
+    <Container className="error">
       <h1 className="tituloError">Esta página no existe</h1>
       <img className="imgError" src={image} alt="Img de Error" />
     </Container>

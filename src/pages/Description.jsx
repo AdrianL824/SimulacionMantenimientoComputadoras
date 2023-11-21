@@ -2,6 +2,12 @@ import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom/";
+import "../assets/css/Description.css";
+
+const cursor = () => {
+  window.scrollTo(0, 0);
+};
 
 const Descripcion = () => {
   return (
@@ -9,15 +15,15 @@ const Descripcion = () => {
       <Card>
         <Card.Header>Descripcion</Card.Header>
         <Card.Body>
-          <Card.Title>Acerca del mantemimientod de computadoras</Card.Title>
+          <Card.Title>Acerca del mantenimiento de computadoras</Card.Title>
           <Card.Text>
             Para el proyecto de la oficina Nro7 se nos dio la tarea de simular
             un grupo de computadoras la cuales tienen una cierta cantidad de uso
-            antes de que se arruinen, tiempo para ser reparadas, costo por oscio
+            antes de que se arruinen, tiempo para ser reparadas, costo por ocio
             y sueldo del tecnico que arregla las maquinas.
           </Card.Text>
           <Card.Text>
-            En el caso del uso de una computadora de tiene que tomar en cuenta
+            En el caso del uso de una computadora se tiene que tomar en cuenta
             que este funcionara una cierta cantidad de tiempo (en horas) hasta
             que se arruine, en ese caso se tiene una tabla de probabilidades la
             cual seria:
@@ -59,9 +65,9 @@ const Descripcion = () => {
             </Table>
           </Container>
           <Card.Text>
-            En el caso del uso de una computadora de tiene que ser reparada se
+            En el caso del uso de una computadora esta tiene que ser reparada se
             llamara a un tecnico al cual tiene una tabla de probabilidades que
-            define cuanto tiempo tardara en repara la computadora (en minutos)
+            define cuanto tiempo tardara en reparar la computadora (en minutos)
             la cual seria:
           </Card.Text>
           <Container>
@@ -96,8 +102,10 @@ const Descripcion = () => {
               </tbody>
             </Table>
           </Container>
-          <Button href="/tabla" variant="primary">
-            Simular
+          <Button variant="primary" onClick={cursor}>
+            <Link to="/tablas" className="boton">
+              Simular
+            </Link>
           </Button>
         </Card.Body>
       </Card>

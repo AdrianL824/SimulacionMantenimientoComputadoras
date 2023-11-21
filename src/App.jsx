@@ -14,8 +14,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Descripcion />} />
-        <Route path="/grafico" element={<Graficos />} />
-        <Route path="/tabla" element={<Tabla />} />
+        <Route path="/graficos" element={<Graficos />} />
+        <Route path="/tablas" element={<Tabla />} />
         <Route path="/*" element={<Error404 />} />
       </Routes>
       <Footer />
