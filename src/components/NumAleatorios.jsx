@@ -243,7 +243,14 @@ const Tabla = () => {
   };
 
   const dataMaquinasOciosas = {
-    labels: ["6-8", "8-10", "10-12", "12-14", "16-18", "18-20"],
+    labels: [
+      "6-8 horas",
+      "8-10 horas",
+      "10-12 horas",
+      "12-14 horas",
+      "16-18 horas",
+      "18-20 horas",
+    ],
     datasets: [
       {
         label: "Porcentaje %",
@@ -262,7 +269,13 @@ const Tabla = () => {
   };
 
   const dataTiempoReparacion = {
-    labels: ["2-4", "4-6", "6-8", "8-10", "10-12"],
+    labels: [
+      "2-4 minutos",
+      "4-6 minutos",
+      "6-8 minutos",
+      "8-10 minutos",
+      "10-12 minutos",
+    ],
     datasets: [
       {
         label: "Porcentaje %",
@@ -306,28 +319,35 @@ const Tabla = () => {
         <Card>
           <Card.Header>Tabla de Resultados</Card.Header>
           <Card.Body>
+            <Card.Text>Los resultados totales de la simulacion son:</Card.Text>
             <Container>
               <Table striped bordered hover>
                 <thead>
-                  <tr className="columna">
+                  <tr className="resultadoTabla">
                     <th>Cant. Maquinas</th>
                     <th>Promedio de horas de uso</th>
-                    <th>Promedio de minutos de reparacion</th>
-                    <th>Precio /hora de ocio</th>
+                    <th>
+                      Promedio de minutos <br />
+                      de reparacion
+                    </th>
+                    <th>
+                      Precio de maquina <br />
+                      /hora de ocio
+                    </th>
                     <th>Salario /hora</th>
                     <th>Precio ocio total</th>
                     <th>Salario total</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="columna">
+                  <tr className="resultadoTabla">
                     <td>{aleatorio.length}</td>
-                    <td>{res.totalUso}</td>
-                    <td>{res.totalReparacion}</td>
-                    <td>{res.precioHoraOcio}</td>
-                    <td>{res.precioEspecialista}</td>
-                    <td>{res.precioOcioTotal}</td>
-                    <td>{res.sueldoEspecialista}</td>
+                    <td>{res.totalUso} horas</td>
+                    <td>{res.totalReparacion} minutos</td>
+                    <td>{res.precioHoraOcio} $</td>
+                    <td>{res.precioEspecialista} $</td>
+                    <td>{res.precioOcioTotal} $</td>
+                    <td>{res.sueldoEspecialista} $</td>
                   </tr>
                 </tbody>
               </Table>
@@ -343,6 +363,10 @@ const Tabla = () => {
             Tabla de totales de rangos de maquinas ociosas
           </Card.Header>
           <Card.Body>
+            <Card.Text>
+              La cantidad de maquinas que funcionan una cierta cantidad de horas
+              entre los siguientes rangos hasta antes de arruinarse son:
+            </Card.Text>
             <Container>
               <Table striped bordered hover>
                 <thead>
@@ -369,12 +393,12 @@ const Tabla = () => {
                 </thead>
                 <tbody>
                   <tr className="columna">
-                    <td>{cantidad.contador1}</td>
-                    <td>{cantidad.contador2}</td>
-                    <td>{cantidad.contador3}</td>
-                    <td>{cantidad.contador4}</td>
-                    <td>{cantidad.contador5}</td>
-                    <td>{cantidad.contador6}</td>
+                    <td>{cantidad.contador1} maquinas</td>
+                    <td>{cantidad.contador2} maquinas</td>
+                    <td>{cantidad.contador3} maquinas</td>
+                    <td>{cantidad.contador4} maquinas</td>
+                    <td>{cantidad.contador5} maquinas</td>
+                    <td>{cantidad.contador6} maquinas</td>
                   </tr>
                 </tbody>
               </Table>
@@ -387,8 +411,16 @@ const Tabla = () => {
       <Container>
         <Card>
           <Card.Header>Grafico de maquinas ociosas</Card.Header>
+          <Card.Body>
+            <Card.Text>
+              Este es el grafico de la cantidad de maquinas que funcionan una
+              cierta cantidad horas entre los rangos hasta antes de arruinarse :
+            </Card.Text>
+          </Card.Body>
           <div className="Graficos tortaIntera">
-            <h1 className="GraficoTitulo">% de rangos de maquinas ociosas</h1>
+            <h1 className="GraficoTitulo">
+              % horas de funcionamiento de maquinas
+            </h1>
             <div className="GraficoTorta">
               <Pie data={dataMaquinasOciosas} options={options}></Pie>
             </div>
@@ -403,6 +435,10 @@ const Tabla = () => {
             Tabla de totales de rangos de tiempo de reparacion
           </Card.Header>
           <Card.Body>
+            <Card.Text>
+              La cantidad de maquinas que fueron reparadas en una cierta
+              cantidad de minutos entre los siguientes rangos son:
+            </Card.Text>
             <Container>
               <Table striped bordered hover>
                 <thead>
@@ -426,11 +462,11 @@ const Tabla = () => {
                 </thead>
                 <tbody>
                   <tr className="columna">
-                    <td>{reparacion.contador1}</td>
-                    <td>{reparacion.contador2}</td>
-                    <td>{reparacion.contador3}</td>
-                    <td>{reparacion.contador4}</td>
-                    <td>{reparacion.contador5}</td>
+                    <td>{reparacion.contador1} maquinas</td>
+                    <td>{reparacion.contador2} maquinas</td>
+                    <td>{reparacion.contador3} maquinas</td>
+                    <td>{reparacion.contador4} maquinas</td>
+                    <td>{reparacion.contador5} maquinas</td>
                   </tr>
                 </tbody>
               </Table>
@@ -439,12 +475,19 @@ const Tabla = () => {
         </Card>
       </Container>
 
+      {/* grafico de maquinas reparadas */}
       <Container>
         <Card>
-          <Card.Header>Grafico de tiempos de reaparacion</Card.Header>
+          <Card.Header>Grafico de tiempos de reparacion</Card.Header>
+          <Card.Body>
+            <Card.Text>
+              Este es el grafico de la cantidad de maquinas que tuvieron una
+              cierta cantidad de minutos entre los rangos para ser arregladas:
+            </Card.Text>
+          </Card.Body>
           <div className="Graficos tortaIntera">
             <h1 className="GraficoTitulo">
-              % de rangos de tiempos de reparación
+              % de minutos de reparacion de la maquina
             </h1>
             <div className="GraficoTorta">
               <Pie data={dataTiempoReparacion} options={options}></Pie>
