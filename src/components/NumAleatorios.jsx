@@ -141,20 +141,20 @@ const Tabla = () => {
   };
 
   //Funtion para los resultados de los rangos de ocio
-  const totalRangos = () => {
+  const totalRangos = (value) => {
     let contador1 = 0;
     let contador2 = 0;
     let contador3 = 0;
     let contador4 = 0;
     let contador5 = 0;
     let contador6 = 0;
-    for (let i = 0; i < aleatorio.length; i++) {
-      if (aleatorio[i].rangoDescomposturas === "Rango 1") contador1++;
-      if (aleatorio[i].rangoDescomposturas === "Rango 2") contador2++;
-      if (aleatorio[i].rangoDescomposturas === "Rango 3") contador3++;
-      if (aleatorio[i].rangoDescomposturas === "Rango 4") contador4++;
-      if (aleatorio[i].rangoDescomposturas === "Rango 5") contador5++;
-      if (aleatorio[i].rangoDescomposturas === "Rango 6") contador6++;
+    for (let i = 0; i < value.length; i++) {
+      if (value[i].rangoDescomposturas === "Rango 1") contador1++;
+      if (value[i].rangoDescomposturas === "Rango 2") contador2++;
+      if (value[i].rangoDescomposturas === "Rango 3") contador3++;
+      if (value[i].rangoDescomposturas === "Rango 4") contador4++;
+      if (value[i].rangoDescomposturas === "Rango 5") contador5++;
+      if (value[i].rangoDescomposturas === "Rango 6") contador6++;
     }
     const result = {
       contador1: contador1,
@@ -167,18 +167,18 @@ const Tabla = () => {
     setCantidad(result);
   };
   //Funtion para los resultados de los rangos de ocio
-  const totalRangosReparacion = () => {
+  const totalRangosReparacion = (value) => {
     let contador1 = 0;
     let contador2 = 0;
     let contador3 = 0;
     let contador4 = 0;
     let contador5 = 0;
-    for (let i = 0; i < aleatorio.length; i++) {
-      if (aleatorio[i].rangoReparacion === "Rango 1") contador1++;
-      if (aleatorio[i].rangoReparacion === "Rango 2") contador2++;
-      if (aleatorio[i].rangoReparacion === "Rango 3") contador3++;
-      if (aleatorio[i].rangoReparacion === "Rango 4") contador4++;
-      if (aleatorio[i].rangoReparacion === "Rango 5") contador5++;
+    for (let i = 0; i < value.length; i++) {
+      if (value[i].rangoReparacion === "Rango 1") contador1++;
+      if (value[i].rangoReparacion === "Rango 2") contador2++;
+      if (value[i].rangoReparacion === "Rango 3") contador3++;
+      if (value[i].rangoReparacion === "Rango 4") contador4++;
+      if (value[i].rangoReparacion === "Rango 5") contador5++;
     }
     const result = {
       contador1: contador1,
@@ -211,9 +211,9 @@ const Tabla = () => {
       };
     }
     setAleatorio(numero);
-    totalRangos();
+    totalRangos(numero);
     resultados(numero);
-    totalRangosReparacion();
+    totalRangosReparacion(numero);
   };
   //Funcion de promedio y resultados de la tabla 1
   const resultados = (value) => {
@@ -332,41 +332,6 @@ const Tabla = () => {
           Generar
         </Button>
       </Container>
-
-      <Table striped bordered hover>
-        <thead>
-          <tr className="columna">
-            <th>n°</th>
-            <th>Cant. Maquinas</th>
-            <th>Promedio de horas de uso</th>
-            <th>
-              Promedio de minutos <br />
-              de reparacion
-            </th>
-            <th>
-              Precio de maquina <br />
-              /hora de ocio
-            </th>
-            <th>Salario /hora</th>
-            <th>Precio ocio total</th>
-            <th>Salario total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lista.map((i, index) => (
-            <tr key={index} className="columna">
-              <td>{index + 1}</td>
-              <td>100</td>
-              <td>{i.totalUso}</td>
-              <td>{i.totalReparacion}</td>
-              <td>{i.precioHoraOcio}</td>
-              <td>{i.precioEspecialista}</td>
-              <td>{i.precioOcioTotal}</td>
-              <td>{i.sueldoEspecialista}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
 
       {/* tabla1 Resultados Totales*/}
       <Container>
@@ -557,10 +522,7 @@ const Tabla = () => {
         </p>
         <Button
           onClick={() => {
-            generadorObjetos();
-            totalRangos();
-            resultados();
-            totalRangosReparacion();
+            simular();
           }}
           variant="primary"
         >

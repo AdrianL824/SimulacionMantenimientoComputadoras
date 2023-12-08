@@ -3,13 +3,15 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import DocuPDF from "./DocuPDF";
 
 const Historial = ({ lista }) => {
   const reload = () => {
     window.location.reload();
   };
   return (
-    <Container>
+    <Container id="tabla">
       <Card>
         <Card.Header>Tabla de Resultados</Card.Header>
         <Card.Body>
@@ -22,6 +24,15 @@ const Historial = ({ lista }) => {
           >
             Actualizar
           </Button>
+          <Card.Text>
+            Para descargar los resultados apretar el siguiente boton:
+          </Card.Text>
+          <PDFDownloadLink
+            document={<DocuPDF lista={lista} />}
+            fileName="Simulacion.pdf"
+          >
+            <Button>Descargar</Button>
+          </PDFDownloadLink>
           <Container>
             <Table striped bordered hover>
               <thead>
