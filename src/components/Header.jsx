@@ -27,6 +27,9 @@ const Header = () => {
               <Nav.Link as={Link} to="/tablas">
                 Tablas
               </Nav.Link>
+              <Nav.Link as={Link} to="/historial">
+                Historial
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -7,6 +7,7 @@ import Footer from "./components/Footer.jsx";
 import Graficos from "./pages/Graficos.jsx";
 import Tabla from "./components/NumAleatorios.jsx";
 import Error404 from "./pages/Error404.jsx";
+import Historial from "./components/Historial.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Descripcion />} />
         <Route path="/graficos" element={<Graficos />} />
         <Route path="/tablas" element={<Tabla />} />
+        <Route path="/historial" element={<Historial />} />
         <Route path="/*" element={<Error404 />} />
       </Routes>
       <Footer />

@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Tabla = () => {
@@ -13,6 +14,14 @@ const Tabla = () => {
   const [cantidad, setCantidad] = useState([]); //Cantidad  de cada rango de ocio para la tabla 2
   const [reparacion, setReparacion] = useState([]);
   const [res, setRes] = useState([]);
+  const [lista, setLista] = useState(() => {
+    try {
+      const item = window.localStorage.getItem("value");
+      return item ? JSON.parse(item) : res;
+    } catch {
+      return res;
+    }
+  });
 
   //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
   const valorDescomposturas = (i) => {
@@ -202,32 +211,29 @@ const Tabla = () => {
       };
     }
     setAleatorio(numero);
+    totalRangos();
+    resultados(numero);
+    totalRangosReparacion();
   };
   //Funcion de promedio y resultados de la tabla 1
-  const resultados = () => {
+  const resultados = (value) => {
     const totalUso = (
-      aleatorio.map((i) => i.cantidad).reduce((prev, curr) => prev + curr, 0) /
-      100
+      value.map((i) => i.cantidad).reduce((prev, curr) => prev + curr, 0) / 100
     ).toFixed(0);
     const totalReparacion = (
-      aleatorio
-        .map((i) => i.reparacion)
-        .reduce((prev, curr) => prev + curr, 0) / 100
+      value.map((i) => i.reparacion).reduce((prev, curr) => prev + curr, 0) /
+      100
     ).toFixed(0);
     const precioHoraOcio = 5;
     const precioEspecialista = 50;
     const precioOcioTotal = (
-      (aleatorio
-        .map((i) => i.reparacion)
-        .reduce((prev, curr) => prev + curr, 0) /
+      (value.map((i) => i.reparacion).reduce((prev, curr) => prev + curr, 0) /
         60) *
       precioHoraOcio
     ).toFixed(0);
 
     const sueldoEspecialista = (
-      (aleatorio
-        .map((i) => i.reparacion)
-        .reduce((prev, curr) => prev + curr, 0) /
+      (value.map((i) => i.reparacion).reduce((prev, curr) => prev + curr, 0) /
         60) *
       precioEspecialista
     ).toFixed(0);
@@ -240,6 +246,7 @@ const Tabla = () => {
       sueldoEspecialista: sueldoEspecialista,
     };
     setRes(resTotal);
+    setLista([...lista, resTotal]);
   };
 
   const dataMaquinasOciosas = {
@@ -293,6 +300,16 @@ const Tabla = () => {
   };
 
   const options = {};
+
+  //Local Store para guardar los datos del historial
+  const setLocalStorage = (value) => {
+    try {
+      window.localStorage.setItem("value", JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container>
       {/* primer boton para iniciar cambio */}
@@ -304,15 +321,48 @@ const Tabla = () => {
         <Button
           onClick={() => {
             generadorObjetos();
-            totalRangos();
-            resultados();
-            totalRangosReparacion();
+            setLocalStorage(lista);
           }}
           variant="primary"
         >
           Generar
         </Button>
       </Container>
+
+      <Table striped bordered hover>
+        <thead>
+          <tr className="columna">
+            <th>n°</th>
+            <th>Cant. Maquinas</th>
+            <th>Promedio de horas de uso</th>
+            <th>
+              Promedio de minutos <br />
+              de reparacion
+            </th>
+            <th>
+              Precio de maquina <br />
+              /hora de ocio
+            </th>
+            <th>Salario /hora</th>
+            <th>Precio ocio total</th>
+            <th>Salario total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lista.map((i, index) => (
+            <tr key={index} className="columna">
+              <td>{index + 1}</td>
+              <td>100</td>
+              <td>{i.totalUso}</td>
+              <td>{i.totalReparacion}</td>
+              <td>{i.precioHoraOcio}</td>
+              <td>{i.precioEspecialista}</td>
+              <td>{i.precioOcioTotal}</td>
+              <td>{i.sueldoEspecialista}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
 
       {/* tabla1 Resultados Totales*/}
       <Container>
