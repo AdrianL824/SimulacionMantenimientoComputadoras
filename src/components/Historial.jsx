@@ -1,8 +1,15 @@
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import PropTypes from "prop-types";
 
-const Historial = () => {
+const Historial = ({ lista }) => {
+  const reload = () => {
+    window.location.reload();
+  };
   return (
-    <div>
+    <Container>
       <Table striped bordered hover>
         <thead>
           <tr className="columna">
@@ -22,22 +29,25 @@ const Historial = () => {
             <th>Salario total</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {lista.map((i, index) => (
             <tr key={index} className="columna">
               <td>{index + 1}</td>
               <td>100</td>
-              <td>{i.totalUso}</td>
               <td>{i.totalReparacion}</td>
+              <td>{i.precioHoraOcio}</td>
               <td>{i.precioHoraOcio}</td>
               <td>{i.precioEspecialista}</td>
               <td>{i.precioOcioTotal}</td>
               <td>{i.sueldoEspecialista}</td>
             </tr>
           ))}
-        </tbody> */}
+        </tbody>
       </Table>
-    </div>
+    </Container>
   );
+};
+Historial.propTypes = {
+  lista: PropTypes.array.isRequired,
 };
 export default Historial;

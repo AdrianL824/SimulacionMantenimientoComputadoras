@@ -310,6 +310,11 @@ const Tabla = () => {
     }
   };
 
+  const simular = () => {
+    generadorObjetos();
+    setLocalStorage(lista);
+  };
+
   return (
     <Container>
       {/* primer boton para iniciar cambio */}
@@ -320,8 +325,7 @@ const Tabla = () => {
         </p>
         <Button
           onClick={() => {
-            generadorObjetos();
-            setLocalStorage(lista);
+            simular();
           }}
           variant="primary"
         >
