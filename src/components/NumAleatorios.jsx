@@ -16,14 +16,7 @@ const Tabla = () => {
   const [reparacion, setReparacion] = useState([]);
   const [res, setRes] = useState([]);
   const [times, setTimes] = useLocalStorage("times", 1);
-  const [lista, setLista] = useState(() => {
-    try {
-      const item = window.localStorage.getItem("value");
-      return item ? JSON.parse(item) : res;
-    } catch {
-      return res;
-    }
-  });
+  const [lista, setLista] = useLocalStorage("simu", []);
 
   //Saca un numero de despomposturas entre el rango con lo numeros aleatorios
   const valorDescomposturas = (i) => {
@@ -159,12 +152,12 @@ const Tabla = () => {
       if (value[i].rangoDescomposturas === "Rango 6") contador6++;
     }
     const result = {
-      contador1: contador1,
-      contador2: contador2,
-      contador3: contador3,
-      contador4: contador4,
-      contador5: contador5,
-      contador6: contador6,
+      contador1: `${contador1}`,
+      contador2: `${contador2}`,
+      contador3: `${contador3}`,
+      contador4: `${contador4}`,
+      contador5: `${contador5}`,
+      contador6: `${contador6}`,
     };
     setCantidad(result);
   };
@@ -183,11 +176,11 @@ const Tabla = () => {
       if (value[i].rangoReparacion === "Rango 5") contador5++;
     }
     const result = {
-      contador1: contador1,
-      contador2: contador2,
-      contador3: contador3,
-      contador4: contador4,
-      contador5: contador5,
+      contador1: `${contador1} `,
+      contador2: `${contador2} `,
+      contador3: `${contador3} `,
+      contador4: `${contador4} `,
+      contador5: `${contador5} `,
     };
     setReparacion(result);
   };
@@ -243,12 +236,12 @@ const Tabla = () => {
     ).toFixed(0);
     const resTotal = {
       n: times,
-      totalUso: totalUso,
-      totalReparacion: totalReparacion,
-      precioHoraOcio: precioHoraOcio,
-      precioEspecialista: precioEspecialista,
-      precioOcioTotal: precioOcioTotal,
-      sueldoEspecialista: sueldoEspecialista,
+      totalUso: `${totalUso} horas`,
+      totalReparacion: `${totalReparacion} minutos`,
+      precioHoraOcio: `${precioHoraOcio} $`,
+      precioEspecialista: `${precioEspecialista} $`,
+      precioOcioTotal: `${precioOcioTotal} $`,
+      sueldoEspecialista: `${sueldoEspecialista} $`,
     };
     setRes(resTotal);
     setLista([...lista, resTotal]);
@@ -306,20 +299,9 @@ const Tabla = () => {
 
   const options = {};
 
-  //Local Store para guardar los datos del historial
-  const setLocalStorage = (value) => {
-    try {
-      window.localStorage.setItem("value", JSON.stringify(value));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const simular = () => {
     generadorObjetos();
-    setLocalStorage(lista);
   };
-  console.log(lista);
 
   return (
     <Container>
@@ -367,12 +349,12 @@ const Tabla = () => {
                 <tbody>
                   <tr className="resultadoTabla">
                     <td>{aleatorio.length}</td>
-                    <td>{res.totalUso} horas</td>
-                    <td>{res.totalReparacion} minutos</td>
-                    <td>{res.precioHoraOcio} $</td>
-                    <td>{res.precioEspecialista} $</td>
-                    <td>{res.precioOcioTotal} $</td>
-                    <td>{res.sueldoEspecialista} $</td>
+                    <td>{res.totalUso}</td>
+                    <td>{res.totalReparacion}</td>
+                    <td>{res.precioHoraOcio}</td>
+                    <td>{res.precioEspecialista}</td>
+                    <td>{res.precioOcioTotal}</td>
+                    <td>{res.sueldoEspecialista}</td>
                   </tr>
                 </tbody>
               </Table>

@@ -8,7 +8,7 @@ import Graficos from "./pages/Graficos.jsx";
 import Tabla from "./components/NumAleatorios.jsx";
 import Error404 from "./pages/Error404.jsx";
 import Historial from "./components/Historial.jsx";
-import { useState } from "react";
+import { useLocalStorage } from "./components/UseLocalStorage.jsx";
 import DocuPDF from "./components/DocuPDF.jsx";
 
 function App() {
@@ -23,14 +23,7 @@ function App() {
       sueldoEspecialista: 533,
     },
   ];
-  const [lista, setLista] = useState(() => {
-    try {
-      const item = window.localStorage.getItem("value");
-      return item ? JSON.parse(item) : dato;
-    } catch {
-      return dato;
-    }
-  });
+  const [lista, setLista] = useLocalStorage("simu", dato);
 
   return (
     <Router>
