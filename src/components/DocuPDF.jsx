@@ -20,6 +20,44 @@ const DocuPDF = ({ lista }) => {
       <Page size="A4">
         <View style={styles.general} id="HeaderTabla">
           <Text>Tabla de Resultados</Text>
+          <Text>
+            Una vez ya corrieron los datos de la simulacion estos son guardados
+            y almacenados, por lo cual se pueden ver los distintos resultados de
+            las simulaciones
+          </Text>
+          <Text>
+            N°: Este es el identificador de a que numero de simulacion
+            pertenecen estos resultados.
+          </Text>
+          <Text>
+            Cant maquinas: Esta es la cantidad de maquinas que se usaron para
+            hacer la simulacion.
+          </Text>
+          <Text>
+            Promedio hora de uso: Este es el promedio de la horas que se uso una
+            computadora hasta antes de que se descompongan.
+          </Text>
+          <Text>
+            Promedio de minutos de reparacion: Este es el promedio de minutos
+            que se tardo un especialista en arreglar las maquinas descompuestas.
+          </Text>
+          <Text>
+            Precio de maquina/hora de ocio: Este es el precio por hora de una
+            maquina durante el tiempo que esta descompuesta.
+          </Text>
+          <Text>
+            Salario/hora: Este es el salario del especialista por la hora de su
+            trabajo arreglando las maquinas.
+          </Text>
+          <Text>
+            Precio ocio total: Este es el total del costo por mas maquinas que
+            estan descompuestas.
+          </Text>
+          <Text>
+            Salario total: Este es el total a pagar al especialista por el
+            tiempo que arreglo mas maquinas.
+          </Text>
+
           <Text>Los resultados totales de la simulacion son:</Text>
           <View key={"0"} style={styles.header}>
             <Text style={styles.headerText}>n°</Text>
