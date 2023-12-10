@@ -12,3 +12,11 @@
     margin-right: 15px;
     margin-bottom: 0;
 }
+
+.tabla th{
+    text-align: center;
+    vertical-align: middle;
+}
+.tabla td{
+    text-align: center;
+}

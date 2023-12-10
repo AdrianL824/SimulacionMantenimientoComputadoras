@@ -326,13 +326,48 @@ const Tabla = () => {
         <Card>
           <Card.Header>Tabla de Resultados</Card.Header>
           <Card.Body>
-            <Card.Text>Los resultados totales de la simulacion son:</Card.Text>
+            <Card.Text>
+              Una vez ya corrieron los datos de la simulacion estos son los
+              distintos resultados lo cuales nos indican:
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>Cant maquinas:</strong> Esta es la cantidad de
+                  maquinas que se usaron para hacer la simulacion.
+                  <br />
+                  <strong>Promedio hora de uso:</strong> Este es el promedio de
+                  la horas que se uso una computadora hasta antes de que se
+                  descompongan.
+                  <br />
+                  <strong>Promedio de minutos de reparacion:</strong> Este es el
+                  promedio de minutos que se tardo un especialista en arreglar
+                  las maquinas descompuestas.
+                  <br />
+                  <strong>Precio de maquina/hora de ocio:</strong> Este es el
+                  precio por hora de una maquina durante el tiempo que esta
+                  descompuesta.
+                  <br />
+                  <strong>Salario/hora:</strong> Este es el salario del
+                  especialista por la hora de su trabajo arreglando las
+                  maquinas.
+                  <br />
+                  <strong>Precio ocio total:</strong> Este es el total del costo
+                  por mas maquinas que estan descompuestas.
+                  <br />
+                  <strong>Salario total:</strong> Este es el total a pagar al
+                  especialista por el tiempo que arreglo mas maquinas.
+                  <br />
+                </Card.Text>
+              </Container>
+            </Card.Text>
             <Container>
               <Table striped bordered hover>
                 <thead>
-                  <tr className="resultadoTabla">
+                  <tr className="tabla">
                     <th>Cant. Maquinas</th>
-                    <th>Promedio de horas de uso</th>
+                    <th>
+                      Promedio de horas <br /> de uso
+                    </th>
                     <th>
                       Promedio de minutos <br />
                       de reparacion
@@ -347,7 +382,7 @@ const Tabla = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="resultadoTabla">
+                  <tr className="tabla">
                     <td>{aleatorio.length}</td>
                     <td>{res.totalUso}</td>
                     <td>{res.totalReparacion}</td>
@@ -367,12 +402,35 @@ const Tabla = () => {
       <Container>
         <Card>
           <Card.Header>
-            Tabla de totales de rangos de maquinas ociosas
+            Tabla de totales de rangos de maquinas descompuestas
           </Card.Header>
           <Card.Body>
             <Card.Text>
               La cantidad de maquinas que funcionan una cierta cantidad de horas
               entre los siguientes rangos hasta antes de arruinarse son:
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>Rango 1:</strong> Esta es el numero de maquinas que
+                  funcionan de 6 a 8 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Rango 2:</strong> Esta es el numero de maquinas que
+                  funcionan de 8 a 10 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Rango 3:</strong> Esta es el numero de maquinas que
+                  funcionan de 10 a 12 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Rango 4:</strong> Esta es el numero de maquinas que
+                  funcionan de 12 a 14 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Rango 5:</strong> Esta es el numero de maquinas que
+                  funcionan de 16 a 18 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Rango 6:</strong> Esta es el numero de maquinas que
+                  funcionan de 18 a 20 horas hasta antes de arruinarse.
+                  <br />
+                </Card.Text>
+              </Container>
             </Card.Text>
             <Container>
               <Table striped bordered hover>
@@ -417,11 +475,34 @@ const Tabla = () => {
       {/* grafico de maquinas ociosas */}
       <Container>
         <Card>
-          <Card.Header>Grafico de maquinas ociosas</Card.Header>
+          <Card.Header>Grafico de maquinas descompuestas</Card.Header>
           <Card.Body>
             <Card.Text>
               Este es el grafico de la cantidad de maquinas que funcionan una
               cierta cantidad horas entre los rangos hasta antes de arruinarse :
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>Color verde:</strong> Esta es el numero de maquinas
+                  que funcionan de 6 a 8 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color rojo:</strong> Esta es el numero de maquinas que
+                  funcionan de 8 a 10 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color amarillo:</strong> Esta es el numero de maquinas
+                  que funcionan de 10 a 12 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color azul:</strong> Esta es el numero de maquinas que
+                  funcionan de 12 a 14 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color naranja:</strong> Esta es el numero de maquinas
+                  que funcionan de 16 a 18 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color cafe:</strong> Esta es el numero de maquinas que
+                  funcionan de 18 a 20 horas hasta antes de arruinarse.
+                  <br />
+                </Card.Text>
+              </Container>
             </Card.Text>
           </Card.Body>
           <div className="Graficos tortaIntera">
@@ -445,6 +526,27 @@ const Tabla = () => {
             <Card.Text>
               La cantidad de maquinas que fueron reparadas en una cierta
               cantidad de minutos entre los siguientes rangos son:
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>Rango 1:</strong> Esta es el numero de maquinas que
+                  tardan de 2 a 4 minutos en ser reparadas por un especialista.
+                  <br />
+                  <strong>Rango 2:</strong> Esta es el numero de maquinas que
+                  tardan de 4 a 6 minutos en ser reparadas por un especialista.
+                  <br />
+                  <strong>Rango 3:</strong> Esta es el numero de maquinas que
+                  tardan de 6 a 8 minutos en ser reparadas por un especialista.
+                  <br />
+                  <strong>Rango 4:</strong> Esta es el numero de maquinas que
+                  tarda de 8 a 10 minutos en ser reparadas por un especialista.
+                  <br />
+                  <strong>Rango 5:</strong> Esta es el numero de maquinas que
+                  tardan de 10 a 12 minutos en ser reparadas por un
+                  especialista.
+                  <br />
+                </Card.Text>
+              </Container>
             </Card.Text>
             <Container>
               <Table striped bordered hover>
@@ -490,6 +592,26 @@ const Tabla = () => {
             <Card.Text>
               Este es el grafico de la cantidad de maquinas que tuvieron una
               cierta cantidad de minutos entre los rangos para ser arregladas:
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>Color rojo:</strong> Esta es el numero de maquinas que
+                  funcionan de 6 a 8 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color amarillo:</strong> Esta es el numero de maquinas
+                  que funcionan de 8 a 10 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color verde:</strong> Esta es el numero de maquinas
+                  que funcionan de 10 a 12 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color naranja:</strong> Esta es el numero de maquinas
+                  que funcionan de 12 a 14 horas hasta antes de arruinarse.
+                  <br />
+                  <strong>Color azul:</strong> Esta es el numero de maquinas que
+                  funcionan de 16 a 18 horas hasta antes de arruinarse.
+                  <br />
+                </Card.Text>
+              </Container>
             </Card.Text>
           </Card.Body>
           <div className="Graficos tortaIntera">
@@ -523,6 +645,32 @@ const Tabla = () => {
         <Card>
           <Card.Header>Tabla de datos</Card.Header>
           <Card.Body>
+            <Card.Text>
+              En esta tabla tenemos los datos de la simulacion como lo son:
+              <br />
+              <Container>
+                <Card.Text>
+                  <strong>n:</strong> Esta es el numero de la maquina.
+                  <br />
+                  <strong>%:</strong> Esta es el un numero aleatorio.
+                  <br />
+                  <strong>Tiempo descomporturas (horas):</strong> Esta es el
+                  tiempo que la maquina funciono hasta llegar a arruinarse.
+                  <br />
+                  <strong>Rango descomposturas:</strong> Esta es el rango de
+                  descomposturas al que pertenece.
+                  <br />
+                  <strong>%:</strong> Esta es el un numero aleatorio.
+                  <br />
+                  <strong>Tiempo arreglo (min):</strong> Esta es el tiempo en
+                  que el especialista arregla la maquina.
+                  <br />
+                  <strong>Rango reparacion:</strong> Esta es el rango de
+                  reparacion al que pertenece.
+                  <br />
+                </Card.Text>
+              </Container>
+            </Card.Text>
             <Container>
               <Table striped bordered hover>
                 <thead>
@@ -541,10 +689,10 @@ const Tabla = () => {
                     <tr key={index} className="columna">
                       <td>{index + 1}</td>
                       <td>{i.numeros}</td>
-                      <td>{i.cantidad}</td>
+                      <td>{i.cantidad} horas</td>
                       <td>{i.rangoDescomposturas}</td>
                       <td>{i.numeros2}</td>
-                      <td>{i.reparacion}</td>
+                      <td>{i.reparacion} minutos</td>
                       <td>{i.rangoReparacion}</td>
                     </tr>
                   ))}

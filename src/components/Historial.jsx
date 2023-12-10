@@ -73,10 +73,12 @@ const Historial = () => {
           <Container>
             <Table striped bordered hover>
               <thead>
-                <tr className="columna">
+                <tr className="tabla">
                   <th>n°</th>
                   <th>Cant. Maquinas</th>
-                  <th>Promedio de horas de uso</th>
+                  <th>
+                    Promedio de horas <br /> de uso
+                  </th>
                   <th>
                     Promedio de minutos <br />
                     de reparacion
@@ -92,7 +94,7 @@ const Historial = () => {
               </thead>
               <tbody>
                 {lista.map((i, index) => (
-                  <tr key={index} className="columna">
+                  <tr key={index} className="tabla">
                     <td>{i.n}</td>
                     <td>100</td>
                     <td>{i.totalUso}</td>
