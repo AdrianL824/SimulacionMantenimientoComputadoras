@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { useLocalStorage } from "./UseLocalStorage";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -14,6 +15,7 @@ const Tabla = () => {
   const [cantidad, setCantidad] = useState([]); //Cantidad  de cada rango de ocio para la tabla 2
   const [reparacion, setReparacion] = useState([]);
   const [res, setRes] = useState([]);
+  const [times, setTimes] = useLocalStorage("times", 1);
   const [lista, setLista] = useState(() => {
     try {
       const item = window.localStorage.getItem("value");
@@ -216,7 +218,9 @@ const Tabla = () => {
     totalRangosReparacion(numero);
   };
   //Funcion de promedio y resultados de la tabla 1
+
   const resultados = (value) => {
+    setTimes(times + 1);
     const totalUso = (
       value.map((i) => i.cantidad).reduce((prev, curr) => prev + curr, 0) / 100
     ).toFixed(0);
@@ -238,6 +242,7 @@ const Tabla = () => {
       precioEspecialista
     ).toFixed(0);
     const resTotal = {
+      n: times,
       totalUso: totalUso,
       totalReparacion: totalReparacion,
       precioHoraOcio: precioHoraOcio,
@@ -314,6 +319,7 @@ const Tabla = () => {
     generadorObjetos();
     setLocalStorage(lista);
   };
+  console.log(lista);
 
   return (
     <Container>

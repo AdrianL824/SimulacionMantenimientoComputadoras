@@ -16,6 +16,8 @@
     "chart.js": "^4.4.0",
     "chartjs": "^0.3.24",
     "file-saver": "^2.0.5",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-chartjs-2": "^5.2.0",

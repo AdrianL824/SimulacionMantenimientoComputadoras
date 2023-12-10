@@ -14,6 +14,7 @@ import DocuPDF from "./components/DocuPDF.jsx";
 function App() {
   const dato = [
     {
+      n: 1,
       totalUso: 7,
       totalReparacion: 5,
       precioHoraOcio: 5,

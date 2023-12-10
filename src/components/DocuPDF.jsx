@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
+import "jspdf-autotable";
 
 const DocuPDF = ({ lista }) => {
   const renderRow = (item) => (
     <View style={styles.row} key={item.id}>
-      <Text style={styles.cell}>{item.id}</Text>
+      <Text style={styles.cell}>{item.n}</Text>
       <Text style={styles.cell}>100</Text>
       <Text style={styles.cell}>{item.totalUso}</Text>
       <Text style={styles.cell}>{item.totalReparacion}</Text>
@@ -17,11 +18,10 @@ const DocuPDF = ({ lista }) => {
   return (
     <Document>
       <Page size="A4">
-        <View key={lista.id}>
+        <View style={styles.general} id="HeaderTabla">
           <Text>Tabla de Resultados</Text>
-
           <Text>Los resultados totales de la simulacion son:</Text>
-          <View style={styles.header}>
+          <View key={"0"} style={styles.header}>
             <Text style={styles.headerText}>n°</Text>
             <Text style={styles.headerText}>Cant. Maquinas</Text>
             <Text style={styles.headerText}>Total Uso</Text>
@@ -38,6 +38,10 @@ const DocuPDF = ({ lista }) => {
   );
 };
 const styles = StyleSheet.create({
+  general: {
+    fontSize: "10px",
+    padding: 10,
+  },
   row: {
     flexDirection: "row",
     padding: 10,

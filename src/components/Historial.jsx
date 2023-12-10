@@ -5,34 +5,46 @@ import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DocuPDF from "./DocuPDF";
+import "../assets/css/Historial.css";
 
 const Historial = ({ lista }) => {
   const reload = () => {
     window.location.reload();
   };
+
   return (
     <Container id="tabla">
       <Card>
         <Card.Header>Tabla de Resultados</Card.Header>
         <Card.Body>
-          <Card.Text>Los resultados totales de la simulacion son:</Card.Text>
-          <Button
-            onClick={() => {
-              reload();
-            }}
-            variant="primary"
-          >
-            Actualizar
-          </Button>
-          <Card.Text>
-            Para descargar los resultados apretar el siguiente boton:
-          </Card.Text>
-          <PDFDownloadLink
-            document={<DocuPDF lista={lista} />}
-            fileName="Simulacion.pdf"
-          >
-            <Button>Descargar</Button>
-          </PDFDownloadLink>
+          <div className="contenedor">
+            <Container className="botonesHistorial">
+              <Card.Text className="acciones">
+                Para actualizar los resultados apretar:
+              </Card.Text>
+              <Button
+                onClick={() => {
+                  reload();
+                }}
+                variant="primary"
+              >
+                Actualizar
+              </Button>
+            </Container>
+            <Container className="botonesHistorial">
+              <Card.Text className="acciones">
+                Para descargar los resultados apretar el siguiente boton:
+              </Card.Text>
+              <PDFDownloadLink
+                document={<DocuPDF lista={lista} />}
+                fileName="Simulacion.pdf"
+              >
+                <Button>Descargar</Button>
+              </PDFDownloadLink>
+            </Container>
+          </div>
+          {/* <Button onClick={generarPDf}>Js PDF </Button> */}
+
           <Container>
             <Table striped bordered hover>
               <thead>
@@ -56,10 +68,10 @@ const Historial = ({ lista }) => {
               <tbody>
                 {lista.map((i, index) => (
                   <tr key={index} className="columna">
-                    <td>{index + 1}</td>
+                    <td>{i.n}</td>
                     <td>100</td>
+                    <td>{i.totalUso}</td>
                     <td>{i.totalReparacion}</td>
-                    <td>{i.precioHoraOcio}</td>
                     <td>{i.precioHoraOcio}</td>
                     <td>{i.precioEspecialista}</td>
                     <td>{i.precioOcioTotal}</td>

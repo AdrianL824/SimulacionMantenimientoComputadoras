@@ -1,0 +1,14 @@
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.botonesHistorial{
+    display: flex;
+    align-items: center;
+}
+
+.acciones{
+    margin-right: 15px;
+    margin-bottom: 0;
+}
