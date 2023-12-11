@@ -5,14 +5,14 @@ import "jspdf-autotable";
 const DocuPDF = ({ lista }) => {
   const renderRow = (item) => (
     <View style={styles.row} key={item.id}>
-      <Text style={styles.cell}>{item.n}</Text>
-      <Text style={styles.cell}>100</Text>
-      <Text style={styles.cell}>{item.totalUso}</Text>
-      <Text style={styles.cell}>{item.totalReparacion}</Text>
-      <Text style={styles.cell}>{item.precioHoraOcio}</Text>
-      <Text style={styles.cell}>{item.precioEspecialista}</Text>
-      <Text style={styles.cell}>{item.precioOcioTotal}</Text>
-      <Text style={styles.cell}>{item.sueldoEspecialista}</Text>
+      <Text style={[styles.cell, styles.numero]}>{item.n}</Text>
+      <Text style={[styles.cell, styles.otros]}>100</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.totalUso}</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.totalReparacion}</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.precioHoraOcio}</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.precioEspecialista}</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.precioOcioTotal}</Text>
+      <Text style={[styles.cell, styles.otros]}>{item.sueldoEspecialista}</Text>
     </View>
   );
   return (
@@ -26,52 +26,75 @@ const DocuPDF = ({ lista }) => {
             las simulaciones
           </Text>
           <Text style={styles.list}>
-            N°: Este es el identificador de a que numero de simulacion
-            pertenecen estos resultados.
+            <Text style={styles.subtitulo}>N°:</Text> Este es el identificador
+            de a que numero de simulacion pertenecen estos resultados.
           </Text>
           <Text style={styles.list}>
-            Cant maquinas: Esta es la cantidad de maquinas que se usaron para
-            hacer la simulacion.
+            <Text style={styles.subtitulo}>Cant maquinas:</Text> Esta es la
+            cantidad de maquinas que se usaron para hacer la simulacion.
           </Text>
           <Text style={styles.list}>
-            Promedio hora de uso: Este es el promedio de la horas que se uso una
-            computadora hasta antes de que se descompongan.
+            <Text style={styles.subtitulo}>Promedio hora de uso:</Text> Este es
+            el promedio de la horas que se uso una computadora hasta antes de
+            que se descompongan.
           </Text>
           <Text style={styles.list}>
-            Promedio de minutos de reparacion: Este es el promedio de minutos
-            que se tardo un especialista en arreglar las maquinas descompuestas.
+            <Text style={styles.subtitulo}>
+              Promedio de minutos de reparacion:
+            </Text>
+            Este es el promedio de minutos que se tardo un especialista en
+            arreglar las maquinas descompuestas.
           </Text>
           <Text style={styles.list}>
-            Precio de maquina/hora de ocio: Este es el precio por hora de una
-            maquina durante el tiempo que esta descompuesta.
+            <Text style={styles.subtitulo}>
+              Precio de maquina/hora de ocio:
+            </Text>
+            Este es el precio por hora de una maquina durante el tiempo que esta
+            descompuesta.
           </Text>
           <Text style={styles.list}>
-            Salario/hora: Este es el salario del especialista por la hora de su
-            trabajo arreglando las maquinas.
+            <Text style={styles.subtitulo}>Salario/hora:</Text> Este es el
+            salario del especialista por la hora de su trabajo arreglando las
+            maquinas.
           </Text>
           <Text style={styles.list}>
-            Precio ocio total: Este es el total del costo por mas maquinas que
-            estan descompuestas.
+            <Text style={styles.subtitulo}>Precio ocio total:</Text> Este es el
+            total del costo por mas maquinas que estan descompuestas.
           </Text>
           <Text style={styles.list}>
-            Salario total: Este es el total a pagar al especialista por el
-            tiempo que arreglo mas maquinas.
+            <Text style={styles.subtitulo}>Salario total:</Text> Este es el
+            total a pagar al especialista por el tiempo que arreglo mas
+            maquinas.
           </Text>
 
           <Text style={styles.concept}>
             Los resultados totales de la simulacion son:
           </Text>
-          <View key={"0"} style={styles.header}>
-            <Text style={styles.headerText}>n°</Text>
-            <Text style={styles.headerText}>Cant. Maquinas</Text>
-            <Text style={styles.headerText}>Total Uso</Text>
-            <Text style={styles.headerText}>Total Reparacion</Text>
-            <Text style={styles.headerText}>Precio Hora Ocio</Text>
-            <Text style={styles.headerText}>Precio Especialista</Text>
-            <Text style={styles.headerText}>Precio Ocio Total</Text>
-            <Text style={styles.headerText}>Sueldo Especialista</Text>
+          <View style={styles.tabla}>
+            <View key={"0"} style={styles.header}>
+              <Text style={[styles.headerText, styles.numero]}>n°</Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                Cant. Maquinas
+              </Text>
+              <Text style={[styles.headerText, styles.otros]}>Total Uso</Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                TotalReparacion
+              </Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                Precio Hora Ocio
+              </Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                Precio Especialista
+              </Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                Precio Ocio Total
+              </Text>
+              <Text style={[styles.headerText, styles.otros]}>
+                Sueldo Especialista
+              </Text>
+            </View>
+            {lista.map(renderRow)}
           </View>
-          {lista.map(renderRow)}
         </View>
       </Page>
     </Document>
@@ -93,11 +116,24 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginBottom: 10,
   },
+  subtitulo: {
+    fontSize: "11px",
+  },
   list: {
     fontSize: "10px",
-    marginLeft: 13,
-    marginRight: 13,
+    marginLeft: 15,
+    marginRight: 15,
     marginBottom: 2,
+  },
+  tabla: {
+    margin: "10px",
+  },
+  numero: {
+    width: "12px",
+  },
+  otros: {
+    width: "11%",
+    display: "block",
   },
   concept: {
     fontSize: "10px",
